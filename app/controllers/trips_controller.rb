@@ -3,19 +3,21 @@ class TripsController < ApplicationController
   def index
     @trips = Trip.all
   end
-  
+
   def show
     @trip = Trip.find(params[:id])
+    @spots = @trip.spots.all
   end
-  
+
   def new
     @trip = Trip.new
   end
-  
+
   def create
-    @Trip = current_user.trips.new(trip_params)
+    @trip = Trip.new(trip_params)
+    @trip.user_id = current_user.id
     @trip.save
-    redirect_to trip_path(trip.id)
+    redirect_to trip_path(@trip.id)
   end
 
   def edit
@@ -32,10 +34,10 @@ class TripsController < ApplicationController
 
   def search
   end
-  
+
   private
-  
-  def spot_params
+
+  def trip_params
     params.require(:trip).permit(:user_id, :location, :period, :comment)
   end
 

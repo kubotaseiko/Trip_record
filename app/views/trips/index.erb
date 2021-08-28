@@ -1,1 +1,13 @@
 <h1>trips#index</h1>
+
+<% @trips.each do |trip| %>
+  <ul>
+    <li>
+      <%= link_to trip_path(trip.id) do %>
+        <%= trip.location %>
+      <% end %>
+      <%= trip.period %>
+      <%= trip.comment %>
+    </li>
+  </ul>
+<% end %>

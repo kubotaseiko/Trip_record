@@ -1,0 +1,69 @@
+
+<div id='map'></div>
+<style>
+#map{
+    height: 500px;
+    width: 530px;
+}
+</style>
+
+<script>
+
+let map
+let geocoder
+let marker = []; // マーカーを複数表示させたいので、配列化
+let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
+const spots = gon.spots; // コントローラーで定義したインスタンス変数を変数に代入
+
+
+function initMap(){
+    // geocoderを初期化
+    geocoder = new google.maps.Geocoder()
+    // mapの初期位置設定
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -35.6809591, lng: 139.7673068},
+    zoom: 14
+    });
+    // forは繰り返し処理
+    // 変数iを0と定義し、
+    // その後gonで定義したusers分繰り返し加える処理を行う
+    for (let i = 0; i < spots.length; i++) {
+        // geocoderで addressの経緯緯度取得
+        // users[i]は変数iのユーザーを取得している
+        geocoder.geocode( { 'address': spots[i].prefecture_code + spots[i].city + spots[i].street }, function(results, status) {
+            // statusがOKであれば
+        if (status == 'OK') {
+    　　　　// map.setCenterで地図が移動
+            map.setCenter(results[0].geometry.location);
+            marker[i] = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+            // 変数iを変数idに代入
+            let id = spots[i]['id']
+            // infoWindowは吹き出し
+            infoWindow[i] = new google.maps.InfoWindow({
+            // contentで中身を指定
+            // 今回は文字にリンクを貼り付けた形で表示
+            content: `<a href='/spots/${id}'>${spots[i].email}</a>`
+            });
+            // markerがクリックされた時、
+            marker[i].addListener("click", function(){
+                // infoWindowを表示
+                infoWindow[i].open(map, marker[i]);
+            });
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+        });
+    }
+}
+
+function codeAddress(){
+    // 入力を取得
+    let inputAddress = document.getElementById('address').value;
+    // geocodingしたあとmapを移動
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>

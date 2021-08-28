@@ -4,4 +4,11 @@ class Spot < ApplicationRecord
   accepts_attachments_for :post_images, attachment: :image
   belongs_to :trip, dependent: :destroy
   belongs_to :user, dependent: :destroy
+  
+  validates :latitude, presence: true
+  validates :longitude, presence: true
+  
+  # =============GoogleMapに使用=============
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end

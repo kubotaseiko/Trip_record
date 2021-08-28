@@ -1,6 +1,6 @@
 <h1>spots#new</h1>
 
-<%= form_with model:@spot, local:true do |f| %>
+<%= form_with model:[@trip, @spot], local:true) do |f| %>
 
   <h4>スポット名</h4>
   <%= f.text_field :spot_name %>
@@ -10,11 +10,15 @@
 
   <h4>comment</h4>
   <%= f.text_area :comment %>
-  
+
   <h4>画像</h4>
+  <h7>
+    shift + クリック　または　ctrl + クリックで画像を選択し、
+    アップロードしてください。
+  </h7><br>
   <!--プレビューの追加予定-->
   <%= f.attachment_field :post_images_images, multiple: true %>
-  
+
   <%= f.submit '投稿' %>
 
 <% end %>

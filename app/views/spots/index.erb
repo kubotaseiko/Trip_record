@@ -1,1 +1,9 @@
 <h1>spots#index</h1>
+
+<% @spots.each do |spot| %>
+<%= spot.spot_name %>
+<%= spot.address %>
+<%= spot.comment %>
+<% end %>
+
+ <%= render 'spots/map', spots: @spots %>

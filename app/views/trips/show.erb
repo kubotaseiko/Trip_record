@@ -1,1 +1,14 @@
 <h1>trips#show</h1>
+
+  <%= @trip.location %>
+  <%= @trip.period %>
+  <%= @trip.comment %>
+
+  <%= link_to 'スポット投稿', new_trip_spot_path(@trip.id) %>
+
+<% @spots.each do |spot| %>
+  <%= spot.spot_name %>
+  <%= spot.address %>
+  <%= spot.comment %>
+
+<% end %>
