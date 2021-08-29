@@ -1,0 +1,41 @@
+<div id='map'></div>
+<style>
+#map{
+    height: 500px;
+    width: 1100px;
+}
+</style>
+
+<script>
+
+let map
+let geocoder
+let marker = [];
+let infoWindow = [];
+const spots = gon.spots;
+
+
+function initMap(){
+    geocoder = new google.maps.Geocoder()
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.681236, lng: 139.767125},
+    zoom: 6
+    });
+    for (let i = 0; i < spots.length; i++) {
+          marker[i] = new google.maps.Marker({
+            position:{lat: spots[i].latitude, lng: spots[i].longitude},
+            map: map
+          });
+          let id = spots[i]['id']
+          infoWindow[i] = new google.maps.InfoWindow({
+          content: `<a href='/trips/${spots[i].trip_id}/spots/${id}'>${spots[i].spot_name}</a>`
+          });
+          marker[i].addListener("click", function(){
+              infoWindow[i].open(map, marker[i]);
+          });
+        };
+}
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>

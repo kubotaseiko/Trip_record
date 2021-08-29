@@ -1,0 +1,41 @@
+
+<div id="mask" class="hidden"></div>
+<div id="modal" class="hidden">
+    <p>モーダルウィンドウ<p>
+
+<h1>spots#new</h1>
+
+<%= form_with(model: [@trip, @spot], local: true, method: :post, url: trip_spots_path ) do |f| %>
+
+  <h4>スポット名</h4>
+  <%= f.text_field :spot_name %>
+
+  <h4>住所</h4>
+  <%= f.text_field :address %>
+
+  <h4>comment</h4>
+  <%= f.text_area :comment %>
+
+  <h4>画像</h4>
+  <h7>
+    shift + クリック　または　ctrl + クリックで画像を選択し、
+    アップロードしてください。
+  </h7><br>
+  <!--プレビューの追加予定-->
+  <%= f.attachment_field :post_images_images, multiple: true %>
+  
+  <div class="field form-group">
+    <%= f.label :tag_name, 'タグ付け' %></br>
+    <%= f.text_field :tag_name, placeholder: "例：カフェ コロナ対策", class: "form-control" %>
+    <p>
+      スペースを入力することで</br>
+      複数のタグを付けることができます。
+    </p>
+  </div>
+
+  <%= f.submit '投稿' %>
+
+<% end %>
+
+
+  </div>

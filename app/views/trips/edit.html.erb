@@ -1,0 +1,16 @@
+<h1>trips#edit</h1>
+
+<%= form_with model:@trip, local:true do |f| %>
+
+  <h4>旅行先</h4>
+  <%= f.text_field :location %>
+
+  <h4>期間</h4>
+  <%= f.text_field :period %>
+
+  <h4>comment</h4>
+  <%= f.text_area :comment %>
+
+  <%= f.submit '保存' %>
+
+<% end %>

@@ -1,0 +1,6 @@
+<h1>spots#index</h1>
+
+<% @tag_list.each do |list| %>
+  <%= link_to list.tag_name, tag_spots_path(tag_id: list.id), class: "btn btn-outline-dark btn-sm" %>
+<% end %>
+ <%= render 'spots/map', spots: @spots %>

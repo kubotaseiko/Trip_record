@@ -1,0 +1,38 @@
+<h1>trips#show</h1>
+
+  <ul class="test-center">
+    <li><%= @trip.location %></li>
+    <li><%= @trip.period %></li>
+    <li><%= @trip.comment %></li>
+    <li>
+      <%= link_to trip_path(@trip), method: :delete, "data-confirm" => "本当に削除しますか？"  do %>
+        <i class="fas fa-times-circle">削除</i>
+      <% end %>
+      <%= link_to "編集する",edit_trip_path(@trip) %>
+    </li>
+  </ul>
+
+  <%= link_to 'スポット投稿', new_trip_spot_path(@trip.id) %>
+
+<% @spots.each do |spot| %>
+  <table>
+    <tbody>
+      <td style="width: 10%">
+        <%= link_to spot.spot_name, trip_spot_path(@trip.id, spot.id) %>
+      </td>
+      <td style="width: 10%"><%= spot.address %></td>
+      <td style="width: 10%"><%= spot.comment %></td>
+      <td style="width: 60%">
+        <% spot.post_images.each do |image| %>
+          <%= attachment_image_tag image, :image ,:fill, 200, 200 %>
+        <% end %>
+      </td>
+      <td style="width: 10%">
+        <%= link_to trip_spot_path(@trip, spot), method: :delete, "data-confirm" => "本当に削除しますか？"  do %>
+        <i class="fas fa-times-circle">削除</i>
+        <% end %>
+        <%= link_to "編集する",edit_trip_spot_path(@trip, spot) %>
+        </td>
+    </tbody>
+  </table>
+<% end %>

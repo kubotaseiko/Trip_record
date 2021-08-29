@@ -1,6 +1,6 @@
-<h1>spots#new</h1>
+<h1>spots#edit</h1>
 
-<%= form_with model:[@trip, @spot], local:true) do |f| %>
+<%= form_with(model:[@trip, @spot], local:true, url: "/trips/#{@trip.id}/spots/#{@spot.id}") do |f| %>
 
   <h4>スポット名</h4>
   <%= f.text_field :spot_name %>
@@ -19,6 +19,6 @@
   <!--プレビューの追加予定-->
   <%= f.attachment_field :post_images_images, multiple: true %>
 
-  <%= f.submit '投稿' %>
+  <%= f.submit '保存' %>
 
 <% end %>
