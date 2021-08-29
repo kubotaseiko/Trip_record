@@ -15,6 +15,12 @@
     </tbody>
   </table>
   
+  <%= link_to trip_spot_path(@spot.trip, @spot), method: :delete, "data-confirm" => "本当に削除しますか？"  do %>
+    削除
+  <% end %>
+  <%= link_to "編集",edit_trip_spot_path(@spot.trip, @spot) %>
+  
+  
   <% @spot.tags.each do |tag| %>
     <%= link_to tag.tag_name, tag_spots_path(tag_id: tag.id), class: "btn btn-outline-success btn-sm mt-3" %>
   <% end %>

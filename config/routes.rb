@@ -13,10 +13,14 @@ Rails.application.routes.draw do
   
   get 'spots' => 'spots#index'
 
-  get 'search' => 'spots#search'
-
-    resources :tags do
+  resources :tags do
     get 'spots', to: 'spots#tag_search'
   end
+  
+  get 'trips_search' => 'trips#search'
+  
+  get 'search' => 'spots#serach'
+  
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
 end

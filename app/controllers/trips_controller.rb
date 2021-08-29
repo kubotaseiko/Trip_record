@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.all
+    @trip = Trip.new
   end
 
   def show
@@ -36,16 +37,20 @@ class TripsController < ApplicationController
     redirect_to trips_path
   end
 
-  def tag_search
-  end
-
-  def search
+  def trips_search
+    split_keyword = params[:keyword].split(/[[:blank:]]+/)
+    @trips = []
+    split_keyword.each do |keyword|
+      next if keyword == ""
+      @trips += Trip.where(["location like? OR comment like? ", "%#{keyword}%", "%#{keyword}%"])
+    end
+    redirect_to trips_path
   end
 
   private
 
   def trip_params
-    params.require(:trip).permit(:user_id, :location, :period, :comment)
+    params.require(:trip).permit(:user_id, :location, :period, :comment, :starts_at, :ends_at)
   end
 
 end

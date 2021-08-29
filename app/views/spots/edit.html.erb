@@ -12,6 +12,16 @@
   <%= f.text_area :comment %>
 
   <h4>画像</h4>
+
+  <% if @spot.post_images.present? %>
+    <p>現在登録されている画像（削除するものはチェックしてください）</p>
+    <% @spot.post_images.each do |image| %>
+    <%= f.check_box :image_ids, {multiple: true}, image.id, false %>
+      <%= attachment_image_tag image, :image ,:fill, 200, 200 %> <br>
+    <% end %>
+  <% end %>
+
+
   <h7>
     shift + クリック　または　ctrl + クリックで画像を選択し、
     アップロードしてください。

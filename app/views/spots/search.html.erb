@@ -1,0 +1,22 @@
+<h1>spots#search</h1>
+
+<% if @spots.length == 0 %>
+  該当ありません
+<% else %>
+  <%= @spots.length %>件
+<% end %>
+
+<% @spots.each do |spot| %>
+  <ul>
+    <li>
+      <%= link_to spots_path(spot.id) do %>
+        <%= spot.spot_name %>
+      <% end %>
+      <%= spot.address %>
+      <%= spot.comment %>
+      <% spot.post_images.each do |image| %>
+          <%= attachment_image_tag image, :image ,:fill, 200, 200 %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>

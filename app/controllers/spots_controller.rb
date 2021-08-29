@@ -38,6 +38,12 @@ class SpotsController < ApplicationController
     @trip = @spot.trip
     @spot.user_id = current_user.id
     if @spot.update(spot_params)
+      if params[:spot][:image_ids]
+        params[:spot][:image_ids].each do |image_id|
+          image = @spot.post_images.find(image_id)
+          image.delete
+        end
+      end
       redirect_to trip_spot_path(@spot.id)
     else
       render 'edit'
@@ -54,6 +60,16 @@ class SpotsController < ApplicationController
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @spots = @tag.spots.all
+  end
+
+  def search
+    split_keyword = params[:keyword].split(/[[:blank:]]+/)
+      @spots = []
+      split_keyword.each do |keyword|
+        next if keyword == ""
+        @spots += Spot.where(["spot_name like? OR address like? OR comment like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+      end
+      # @shops.uniq!
   end
 
   private

@@ -6,11 +6,15 @@ class Spot < ApplicationRecord
   accepts_attachments_for :post_images, attachment: :image, append: :true
   belongs_to :trip
   belongs_to :user
-  
+
+  # =============バリデーション=============
+  validates :starts_at, presence: true
+  validates :ends_at, presence: true
+
   # =============GoogleMapに使用=============
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
-  
+
   # =============tag関連=============
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
@@ -26,5 +30,5 @@ class Spot < ApplicationRecord
       self.tags << new_spot_tag
     end
   end
-  
+
 end

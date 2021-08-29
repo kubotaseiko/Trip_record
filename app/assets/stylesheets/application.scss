@@ -12,9 +12,16 @@
  *
  *= require_tree .
  *= require_self
+ *= require fullcalendar
  */
+
 @import "bootstrap";
+
 
 li {
   list-style: none;
+}
+
+.fc-time{
+   display : none;
 }

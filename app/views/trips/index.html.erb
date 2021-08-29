@@ -1,5 +1,24 @@
 <h1>trips#index</h1>
 
+<%= form_with url: trips_path, method: :get, class: 'mx-auto', local: true do |f| %>
+  <%= f.text_field :keyword, value: @keyword, placeholder: "ワードを入力して検索！", class: "form-control form-control-sm" %>
+  <button type="submit" class="btn btn-light btn-sm d-none d-lg-block">
+    <i class="fas fa-search" aria-hidden="true"></i>
+  </button>
+<% end %>
+
+
+<div class="content">
+  <a class="js-modal-open" href="">Tripを投稿</a>
+</div>
+<div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+        <%= render 'trips/new', trip: @trip %>
+        <a class="js-modal-close" href="">閉じる</a>
+    </div>
+</div>
+
 <% @trips.each do |trip| %>
   <ul>
     <li>
@@ -8,6 +27,8 @@
       <% end %>
       <%= trip.period %>
       <%= trip.comment %>
+      <%= trip.starts_at %>
+      <%= trip.ends_at %>
     </li>
   </ul>
 <% end %>

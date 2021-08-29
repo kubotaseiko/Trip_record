@@ -69,3 +69,5 @@ gem 'jquery-rails'
 gem 'geocoder'
 gem "gon"
 gem 'dotenv-rails'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
