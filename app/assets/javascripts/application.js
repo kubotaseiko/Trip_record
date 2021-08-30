@@ -35,7 +35,6 @@ $(function () {
           eventCalendar();
         });
         $(document).on('turbolinks:before-cache', clearCalendar);
-        //以下を追加
         $('#calendar').fullCalendar({
           events: '/trips.json'
         });

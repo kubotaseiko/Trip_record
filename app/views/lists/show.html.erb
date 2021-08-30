@@ -1,0 +1,15 @@
+<h1>lists#show</h1>
+
+  <ul class="test-center">
+    <img src="<%= @list.image %>" alt="画像がありません" class="border-bottom card-image">
+    <li><%= @list.spot_name %></li>
+    <li><%= @list.address %></li>
+    <li><%= @list.comment %></li>
+    <li><%= link_to @list.site_url, @list.site_url %></li>
+    <li>
+      <%= link_to list_path(@list), method: :delete, "data-confirm" => "本当に削除しますか？"  do %>
+        <i class="fas fa-times-circle">削除</i>
+      <% end %>
+      <%= link_to "編集する",edit_list_path(@list) %>
+    </li>
+  </ul>

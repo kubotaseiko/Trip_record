@@ -10,17 +10,19 @@ Rails.application.routes.draw do
       resource 'favorite', only: [:create, :destroy]
     end
   end
-  
+
+resources 'lists', only: [:index, :show, :edit, :update, :create, :destroy]
+
   get 'spots' => 'spots#index'
 
   resources :tags do
     get 'spots', to: 'spots#tag_search'
   end
-  
+
   get 'trips_search' => 'trips#search'
-  
-  get 'search' => 'spots#serach'
-  
+  get 'search' => 'spots#search'
+  get 'mypage' => 'trips#mypage'
+
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
 end

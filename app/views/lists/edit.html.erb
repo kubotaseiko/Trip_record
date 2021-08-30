@@ -1,0 +1,27 @@
+<h1>lists#edit</h1>
+
+<%= form_with model:@list, local:true do |f| %>
+
+  <div class="field form-group">
+    <h4>スポット</h4>
+    <%= f.text_field :spot_name %>
+  </div>
+  
+  <div class="field form-group">
+    <h4>住所</h4>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field form-group">
+    <h4>URL</h4>
+    <%= f.text_field :site_url %>
+  </div>
+  
+  <div class="field form-group">
+    <h4>comment</h4>
+    <%= f.text_area :comment %>
+  </div>
+
+  <%= f.submit '保存' %>
+
+<% end %>

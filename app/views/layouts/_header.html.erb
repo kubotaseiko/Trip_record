@@ -15,6 +15,12 @@
                 <% end %>
               </li>
               <li class="nav-item">
+                <%= link_to mypage_path, class:"nav-link text-light" do %>
+                  <i class="fas fa-map-pin"></i>
+                  mypage
+                <% end %>
+              </li>
+              <li class="nav-item">
                 <%= link_to spots_path, class:"nav-link text-light" do %>
                   <i class="fas fa-map-pin"></i>
                   SpotsMap
@@ -27,9 +33,10 @@
                 <% end %>
               </li>
               <li class="nav-item">
-                  <i class="fas fa-map-marked-alt nav-link text-light">
+                <%= link_to lists_path, class:"nav-link text-light", data: {"turbolinks" => false} do %>
+                  <i class="fas fa-map-marked-alt"></i>
                   NextPlan
-                  </i>
+                <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>

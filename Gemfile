@@ -71,3 +71,4 @@ gem "gon"
 gem 'dotenv-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'metainspector'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_29_150719) do
+ActiveRecord::Schema.define(version: 2021_08_30_071606) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(version: 2021_08_29_150719) do
     t.datetime "updated_at", null: false
     t.index ["spot_id"], name: "index_favorites_on_spot_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "spot_name", null: false
+    t.string "address"
+    t.text "comment"
+    t.text "site_url"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "image"
   end
 
   create_table "post_images", force: :cascade do |t|

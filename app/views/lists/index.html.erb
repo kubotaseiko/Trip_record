@@ -1,0 +1,26 @@
+<h1>lists#index</h1>
+
+<div class="content">
+  <a class="js-modal-open" href="">NextPlanを投稿</a>
+</div>
+<div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+        <%= render 'lists/new', list: @list %>
+        <a class="js-modal-close" href="">閉じる</a>
+    </div>
+</div>
+
+<% @lists.each do |list| %>
+  <ul>
+    <li>
+      <img src="<%= list.image %>" alt="画像がありません" class="border-bottom card-image image_area"></br>
+      <%= link_to list_path(list.id) do %>
+        <%= list.spot_name %>
+      <% end %>
+      <!--<%= list.address %>-->
+      <!--<%= list.comment %>-->
+      <!--<%= link_to list.site_url, list.site_url %>-->
+    </li>
+  </ul>
+<% end %>
