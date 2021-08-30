@@ -9,15 +9,9 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to new_trip_path, class:"nav-link text-light" do %>
-                <i class="fas fa-plus-circle"></i>
-                  NewTrip
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to mypage_path, class:"nav-link text-light" do %>
-                  <i class="fas fa-map-pin"></i>
-                  mypage
+                <%= link_to calendar_path, class:"nav-link text-light" do %>
+                  <i class="far fa-calendar-alt"></i>
+                  calendar
                 <% end %>
               </li>
               <li class="nav-item">

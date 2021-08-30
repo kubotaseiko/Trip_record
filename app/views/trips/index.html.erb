@@ -25,10 +25,8 @@
       <%= link_to trip_path(trip.id) do %>
         <%= trip.location %>
       <% end %>
-      <%= trip.period %>
+      <%= trip.starts_at.strftime('%Y/%m/%d') %> ～ <%= trip.ends_at.strftime('%Y/%m/%d') %>
       <%= trip.comment %>
-      <%= trip.starts_at %>
-      <%= trip.ends_at %>
     </li>
   </ul>
 <% end %>

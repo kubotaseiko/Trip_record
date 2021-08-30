@@ -2,7 +2,7 @@
 
   <ul class="test-center">
     <li><%= @trip.location %></li>
-    <li><%= @trip.period %></li>
+    <li><%= @trip.starts_at.strftime('%Y/%m/%d') %> ～ <%= @trip.ends_at.strftime('%Y/%m/%d') %></li>
     <li><%= @trip.comment %></li>
     <li>
       <%= link_to trip_path(@trip), method: :delete, "data-confirm" => "本当に削除しますか？"  do %>

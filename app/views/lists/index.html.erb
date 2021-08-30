@@ -14,7 +14,7 @@
 <% @lists.each do |list| %>
   <ul>
     <li>
-      <img src="<%= list.image %>" alt="画像がありません" class="border-bottom card-image image_area"></br>
+      <img src="<%= list.image %>" alt="画像がありません" class="image_area"></br>
       <%= link_to list_path(list.id) do %>
         <%= list.spot_name %>
       <% end %>

@@ -47,7 +47,7 @@ class TripsController < ApplicationController
     render 'index'
   end
   
-  def mypage
+  def calendar
     @trips = Trip.all
   end
 

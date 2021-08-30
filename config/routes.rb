@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
 
-  resources 'trips', only: [:index, :show, :edit, :update, :new, :create, :destroy] do
+  resources 'trips', only: [:index, :show, :edit, :update, :create, :destroy] do
     resources 'spots', only: [:show, :edit, :update, :new, :create, :destroy] do
       resource 'favorite', only: [:create, :destroy]
     end
@@ -21,7 +21,7 @@ resources 'lists', only: [:index, :show, :edit, :update, :create, :destroy]
 
   get 'trips_search' => 'trips#search'
   get 'search' => 'spots#search'
-  get 'mypage' => 'trips#mypage'
+  get 'calendar' => 'trips#calendar'
 
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 

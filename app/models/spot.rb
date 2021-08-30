@@ -7,10 +7,6 @@ class Spot < ApplicationRecord
   belongs_to :trip
   belongs_to :user
 
-  # =============バリデーション=============
-  validates :starts_at, presence: true
-  validates :ends_at, presence: true
-
   # =============GoogleMapに使用=============
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

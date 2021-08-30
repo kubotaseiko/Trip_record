@@ -42,7 +42,7 @@ $(function () {
 });
 
 
-// 地図表示
+// 複数画像投稿とプレビュー
 function previewFiles() {
     var preview_array = [];
     var file_array = [];

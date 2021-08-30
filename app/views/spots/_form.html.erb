@@ -24,10 +24,11 @@
       shift + クリック　または　ctrl + クリックで画像を選択し、</br>
       アップロードしてください。
     </h7><br>
-    <input type="file" onchange="previewFiles()" name="spot[post_images_images][]" id="spot_post_images_images" multiple><br>
+    <%= f.attachment_field :post_images_images, multiple: true, class: "form-control-file",onchange: "previewFiles()", id: "spot_post_images_images" %>
     <img src="" height="200" alt="preview..." name="preview0">
     <img src="" height="200" name="preview1">
     <img src="" height="200" name="preview2">
+    
     </br>
   </div>
 
