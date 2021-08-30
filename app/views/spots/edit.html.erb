@@ -26,8 +26,10 @@
     shift + クリック　または　ctrl + クリックで画像を選択し、
     アップロードしてください。
   </h7><br>
-  <!--プレビューの追加予定-->
-  <%= f.attachment_field :post_images_images, multiple: true %>
+    <%= f.attachment_field :post_images_images, multiple: true, class: "form-control-file",onchange: "previewFiles()", id: "spot_post_images_images" %>
+    <img src="" height="200" alt="preview..." name="preview0">
+    <img src="" height="200" name="preview1">
+    <img src="" height="200" name="preview2">
 
   <%= f.submit '保存' %>
 
