@@ -1,7 +1,6 @@
 class SpotsController < ApplicationController
 
   def index
-    @tag_list = Tag.all
     gon.spots = Spot.all
   end
 

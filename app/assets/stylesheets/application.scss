@@ -17,6 +17,7 @@
 
 @import "bootstrap";
 
+
 div {
   font-family: 'DotGothic16', sans-serif;
 }
@@ -48,10 +49,32 @@ li {
 }
 
 .content_font {
-  color:#003366;
+  color: #0000FF;
   font-size: 20px;
 }
 
 .title-font {
   font-size: 30px;
+}
+
+.menu-font {
+  color:#0000FF;
+  font-size: 20px;
+}
+
+.menu-font > i {
+  color: #6c6b6b;
+}
+
+.menu {
+  margin: 30px;
+}
+
+.page_title {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+.content-title {
+  font-size: 35px;
 }

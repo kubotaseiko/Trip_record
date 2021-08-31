@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @trips = Trip.all
+    @tag_list = Tag.all
   end
 
   def guest_sign_in

@@ -11,25 +11,21 @@
               <li class="nav-item">
                 <%= link_to calendar_path, class:"nav-link text-light" do %>
                   <i class="far fa-calendar-alt"></i>
-                  calendar
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to spots_path, class:"nav-link text-light" do %>
-                  <i class="fas fa-map-pin"></i>
-                  SpotsMap
+                  <i class="fas fa-map-marked-alt"></i>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to trips_path, class:"nav-link text-light", data: {"turbolinks" => false} do %>
                   <i class="fas fa-plane"></i>
-                  trips
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to lists_path, class:"nav-link text-light", data: {"turbolinks" => false} do %>
-                  <i class="fas fa-map-marked-alt"></i>
-                  NextPlan
+                  <i class="fas fa-external-link-alt"></i>
                 <% end %>
               </li>
               <li class="nav-item">
@@ -41,23 +37,19 @@
               <li class="nav-item">
                 <%= link_to root_path, class:"nav-link text-light" do %>
                 <i class="fas fa-home"></i>
-                Home
                 <% end %>
               </li>
               <li class="nav-item">
                 <i class="fas fa-link"></i>
-                About
               </li>
               <li class="nav-item">
                 <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
                 <i class="fas fa-user-plus"></i>
-                sign up
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to new_user_session_path, class:"nav-link text-light" do %>
                 <i class="fas fa-sign-in-alt"></i>
-                login
                 <% end %>
               </li>
             <% end %>
