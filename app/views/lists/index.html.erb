@@ -1,4 +1,4 @@
-<h1>lists#index</h1>
+<div class='page_title'>Next Plan</div>
 
 <div class="content">
   <a class="js-modal-open" href="">NextPlanを投稿</a>
@@ -11,16 +11,20 @@
     </div>
 </div>
 
-<% @lists.each do |list| %>
-  <ul>
-    <li>
-      <img src="<%= list.image %>" alt="画像がありません" class="image_area"></br>
-      <%= link_to list_path(list.id) do %>
-        <%= list.spot_name %>
-      <% end %>
-      <!--<%= list.address %>-->
-      <!--<%= list.comment %>-->
-      <!--<%= link_to list.site_url, list.site_url %>-->
-    </li>
-  </ul>
+<div class="row">
+  <% @lists.each do |list| %>
+  <div class="card col-md-4 col-12">
+    <img src="<%= list.image %>" alt="画像がありません" class="image_area card-img-top pt-3">
+    <div class="card-body">
+      <div class="content_font">
+          <%= list.spot_name %>
+      </div>
+      <div class="detail_font">
+        <li><%= list.address %></li>
+        <li><%= list.comment %></li>
+        <li><%= link_to list.site_url, list.site_url %></li>
+      </div>
+    </div>
+  </div>
 <% end %>
+</div>

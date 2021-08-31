@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-resources 'lists', only: [:index, :show, :edit, :update, :create, :destroy]
+resources 'lists', only: [:index, :edit, :update, :create, :destroy]
 
   get 'spots' => 'spots#index'
 
