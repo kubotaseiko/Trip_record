@@ -1,38 +1,60 @@
-<h1>trips#show</h1>
+<li class="text-right">
+  <%= link_to '削除', trip_path(@trip), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <%= link_to "編集する",edit_trip_path(@trip) %>
+</li>
+<div class="mx-auto col-md-6 col-12">
+  <div class="title-font">
+    <%= @trip.location %>
+  </div>
+  <div class="detail_font border rounded m-3 p-3">
+  <li><%= @trip.starts_at.strftime('%Y/%m/%d') %> ～ <%= @trip.ends_at.strftime('%Y/%m/%d') %></li>
+  <li><%= @trip.comment %></li>
+  </div>
+</div>
 
-  <ul class="test-center">
-    <li><%= @trip.location %></li>
-    <li><%= @trip.starts_at.strftime('%Y/%m/%d') %> ～ <%= @trip.ends_at.strftime('%Y/%m/%d') %></li>
-    <li><%= @trip.comment %></li>
-    <li>
-      <%= link_to trip_path(@trip), method: :delete, "data-confirm" => "本当に削除しますか？"  do %>
-        <i class="fas fa-times-circle">削除</i>
-      <% end %>
-      <%= link_to "編集する",edit_trip_path(@trip) %>
-    </li>
-  </ul>
-
-
-  <%= link_to 'スポット投稿', new_trip_spot_path(@trip.id) %>
+<div class='mb-3'>
+  <%= link_to 'spot投稿', new_trip_spot_path(@trip.id), class: 'btn btn-outline-primary' %>
+</div>
 
 <% @spots.each do |spot| %>
-  <table>
-    <tbody>
-      <td style="width: 10%">
-        <%= link_to spot.spot_name, trip_spot_path(@trip.id, spot.id) %>
-      </td>
-      <td style="width: 10%"><%= spot.address %></td>
-      <td style="width: 75%">
-        <% spot.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image ,:fill, 200, 200 %>
+  <div class='border rounded p-3 col-12 mx-auto m-2'>
+    <div class="content_font">
+      <%= link_to spot.spot_name, trip_spot_path(@trip.id, spot.id) %>
+    </div>
+    <div>
+    <%= spot.address %>
+    </div>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <% spot.post_images.drop(1).count.times do |index| %>
+        <li data-target="#carouselExampleIndicators" data-slide-to="#{index}"></li>
+      <% end %>
+    </ol>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <% spot.post_images.first(1).each do |image| %>
+          <%= attachment_image_tag image, :image, :fill, 500, 200, class: "carousel_image"  %>
         <% end %>
-      </td>
-      <td style="width: 5%">
-        <%= link_to trip_spot_path(@trip, spot), method: :delete, "data-confirm" => "本当に削除しますか？"  do %>
-        削除
-        <% end %>
-        <%= link_to "編集",edit_trip_spot_path(@trip, spot) %>
-        </td>
-    </tbody>
-  </table>
+      </div>
+      <% spot.post_images.drop(1).each do |image| %>
+        <div class="carousel-item">
+          <%= attachment_image_tag image, :image ,:fill, 500, 200, class: "carousel_image" %>
+        </div>
+      <% end %>
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+
+  </div>
 <% end %>

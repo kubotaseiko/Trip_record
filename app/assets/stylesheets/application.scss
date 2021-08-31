@@ -17,6 +17,17 @@
 
 @import "bootstrap";
 
+div {
+  font-family: 'DotGothic16', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+text-decoration: none;
+}
 
 li {
   list-style: none;
@@ -30,4 +41,17 @@ li {
   width: 300px;
   height: 200px;
   object-fit: cover;
+}
+
+.detail_font{
+  font-size: 15px;
+}
+
+.content_font {
+  color:#003366;
+  font-size: 20px;
+}
+
+.title-font {
+  font-size: 30px;
 }

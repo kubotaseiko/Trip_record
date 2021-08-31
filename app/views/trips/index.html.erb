@@ -9,7 +9,7 @@
 
 
 <div class="content">
-  <a class="js-modal-open" href="">Tripを投稿</a>
+  <a class="js-modal-open btn btn-outline-primary" href="">Tripを投稿</a>
 </div>
 <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
@@ -20,14 +20,15 @@
 </div>
 
 <% @trips.each do |trip| %>
-  <ul>
-    <li>
+  <div class="border rounded-pill p-3 col-md-6 col-12 mx-auto m-2">
+    <div class="content_font">
       <%= link_to trip_path(trip.id) do %>
         <%= trip.location %>
       <% end %>
+    </div>
+    <div class="detail_font">
       <%= trip.starts_at.strftime('%Y/%m/%d') %> ～ <%= trip.ends_at.strftime('%Y/%m/%d') %>
-      <%= trip.comment %>
-    </li>
-  </ul>
+    </div>
+  </div>
 <% end %>
 
