@@ -68,7 +68,7 @@ class SpotsController < ApplicationController
         next if keyword == ""
         @spots += Spot.where(["spot_name like? OR address like? OR comment like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
       end
-      # @shops.uniq!
+      @shops.uniq!
   end
 
   private
