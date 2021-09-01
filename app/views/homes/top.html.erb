@@ -1,9 +1,9 @@
 <div class='page_title'>TripRecord</div>
 
-<div class="row">
-  <div class="border rounded p-3 col-md-6 col-12">
-    <% if user_signed_in? %>
-    <div class="content-title">Menu</div>
+<% if user_signed_in? %>
+  <div class="row">
+    <div class="border rounded p-3 col-md-6 col-12">
+      <div class="content-title">Menu</div>
       <li class="menu">
         <%= link_to calendar_path, class:"menu-font" do %>
           <i class="far fa-calendar-alt"></i>
@@ -34,37 +34,37 @@
           Log out
         <% end %>
       </li>
-    <% else %>
-      <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
-    <% end %>
-  </div>
+    </div>
 
-  <div class="col-md-6 col-12">
+    <div class="col-md-6 col-12">
 
-    <div class="border rounded p-3">
-      <div class="content-title">Spot検索</div>
-      <form class="form-inline">
-          <div class="form-group mx-auto m-2">
-            <%= form_with url: search_path, method: :get, class: 'm-3', local: true do |f| %>
-              <%= f.text_field :keyword, value: @keyword, placeholder: "ワードを入力して検索", class: "form-control" %>
-              <button type="submit" class="btn btn-outline-dark btn-sm">
-                <i class="fas fa-search" aria-hidden="true"></i>
-              </button>
-          </div>
+      <div class="border rounded p-3">
+        <div class="content-title">Spot検索</div>
+        <form class="form-inline">
+            <div class="form-group mx-auto m-2">
+              <%= form_with url: search_path, method: :get, class: 'm-3', local: true do |f| %>
+                <%= f.text_field :keyword, value: @keyword, placeholder: "ワードを入力して検索", class: "form-control" %>
+                <button type="submit" class="btn btn-outline-dark btn-sm">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+          <% end %>
+        </form>
+      </div>
+  
+      <div class="border rounded p-3">
+        <div class="content-title">Spot-tag</div>
+        <% @tag_list.each do |list| %>
+          <%= link_to list.tag_name, tag_spots_path(tag_id: list.id), class: "btn btn-outline-dark btn-sm" %>
         <% end %>
-      </form>
-    </div>
-
-    <div class="border rounded p-3">
-      <div class="content-title">Spot-tag</div>
-      <% @tag_list.each do |list| %>
-        <%= link_to list.tag_name, tag_spots_path(tag_id: list.id), class: "btn btn-outline-dark btn-sm" %>
-      <% end %>
-    </div>
-
-    <div class="border rounded p-3">
-      <div class="content-title">Bookmark</div>
+      </div>
+  
+      <div class="border rounded p-3">
+        <div class="content-title">Bookmark</div>
+      </div>
     </div>
   </div>
 
-</div>
+  <% else %>
+    <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
+  <% end %>

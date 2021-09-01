@@ -2,7 +2,7 @@
   <%= link_to '削除', trip_path(@trip), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <%= link_to "編集する",edit_trip_path(@trip) %>
 </li>
-<div class="mx-auto col-md-6 col-12">
+<div class="mx-auto col-md-8 col-12">
   <div class="title-font">
     <%= @trip.location %>
   </div>
@@ -17,7 +17,7 @@
 </div>
 
 <% @spots.each do |spot| %>
-  <div class='border rounded p-3 col-12 mx-auto m-2'>
+  <div class='border rounded p-3 col-md-8 col-12 mx-auto m-2'>
     <div class="content_font">
       <%= link_to spot.spot_name, trip_spot_path(@trip.id, spot.id) %>
     </div>
