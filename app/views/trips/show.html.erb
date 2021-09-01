@@ -1,7 +1,7 @@
-<li class="text-right">
+<div class="text-right">
   <%= link_to '削除', trip_path(@trip), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <%= link_to "編集する",edit_trip_path(@trip) %>
-</li>
+</div>
 <div class="mx-auto col-md-8 col-12">
   <div class="title-font">
     <%= @trip.location %>

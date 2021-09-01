@@ -1,20 +1,28 @@
-<h1>spots#show</h1>
-
-
-<%= @spot.spot_name %>
-<%= @spot.address %>
-<%= @spot.comment %>
-<% @spot.post_images.each do |image| %>
-  <%= attachment_image_tag image, :image ,:fill, 200, 200 %>
-<% end %>
-
-
-  <%= link_to trip_spot_path(@spot.trip, @spot), method: :delete, "data-confirm" => "本当に削除しますか？"  do %>
-    削除
-  <% end %>
-  <%= link_to "編集",edit_trip_spot_path(@spot.trip, @spot) %>
-
-
-  <% @spot.tags.each do |tag| %>
-    <%= link_to tag.tag_name, tag_spots_path(tag_id: tag.id), class: "btn btn-outline-success btn-sm mt-3" %>
-  <% end %>
+<div class="row">
+  <div class="col-md-8 col-12 mx-auto border rounded p-3 mt-5">
+  <div class="text-right">
+    <%= link_to "削除", trip_spot_path(@spot.trip, @spot), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    <%= link_to "編集",edit_trip_spot_path(@spot.trip, @spot) %>
+  </div>
+  
+  <div class='page_title'><%= @spot.spot_name %></div>
+  
+  <div class="content_font mb-3">
+    <%= @spot.address %>
+  </div>
+  <div class="content_font mb-3">
+    <%= @spot.comment %>
+  </div>
+  <div class="content_font">
+    <% @spot.post_images.each do |image| %>
+      <%= attachment_image_tag image, :image ,:fill, 200, 200 %>
+    <% end %>
+  </div>
+  
+  
+    <% @spot.tags.each do |tag| %>
+      <%= link_to tag.tag_name, tag_spots_path(tag_id: tag.id), class: "btn btn-dark btn-sm mt-3" %>
+    <% end %>
+  
+  </div>
+</div>
