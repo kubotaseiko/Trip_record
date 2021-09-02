@@ -8,9 +8,14 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.user_id = current_user.id
-    @list.get_site_info(@list.site_url)
-    @list.save
-    redirect_to lists_path
+    if @list.save
+      @list.get_site_info(@list.site_url)
+      redirect_to lists_path
+    else
+      @lists = List.where(user_id: current_user.id).order(id: "DESC")
+      @list = List.new
+      render 'index'
+    end
   end
 
   def edit

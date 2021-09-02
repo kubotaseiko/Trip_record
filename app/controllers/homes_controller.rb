@@ -3,6 +3,9 @@ class HomesController < ApplicationController
     @tag_list = Tag.all
     # .includes(:tagmaps).where(tagmap: { id: 1 })
     # @tag_list = Tag.includes(:spots).where(spot: { user_id: current_user.id })
+    if user_signed_in?
+      @favorites = Favorite.all.where(user_id: current_user.id).order(id: "DESC")
+    end
   end
 
   def guest_sign_in

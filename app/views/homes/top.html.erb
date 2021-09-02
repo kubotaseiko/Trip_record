@@ -53,18 +53,56 @@
       </div>
 
       <div class="border rounded p-3">
+        <div class="content-title">お気に入り</div>
+        <% if @favorites.count ==  0 %>
+          <div class="col-12 mb-5">
+              <h6 class="mx-auto m-3 p-5 border">まだお気に入りのスポットが登録されていません。</h6>
+          </div>
+        <% else %>
+          <% @favorites.first(3).each do |favorite| %>
+            <div class="text-center">
+              <%= link_to favorite.spot.spot_name, trip_spot_path(trip_id: favorite.spot.trip, id: favorite.spot) %>
+            </div>
+          <% end %>
+          <div class="text-right mr-5">
+            <%= link_to 'more >>', favorite_all_path %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="border rounded p-3">
         <div class="content-title">Tag一覧</div>
         <% @tag_list.each do |list| %>
           <%= link_to list.tag_name, tag_spots_path(tag_id: list.id), class: "btn btn-outline-dark btn-sm" %>
         <% end %>
       </div>
 
-      <div class="border rounded p-3">
-        <div class="content-title">Bookmark</div>
-      </div>
     </div>
   </div>
 
-  <% else %>
-    <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
-  <% end %>
+<% else %>
+  <div class="m-5">
+    
+    <div class="m-5">
+      旅行の記録、写真をTripRecordで管理しよう！
+    </div>
+    
+    <span>
+      <%= link_to new_user_registration_path, class:"btn btn-outline-dark" do %>
+        <i class="fas fa-user-plus"></i>
+        新規登録
+      <% end %>
+    </span>
+    
+    <span>
+      <%= link_to new_user_session_path, class:"btn btn-outline-dark" do %>
+        <i class="fas fa-sign-in-alt"></i>
+        ログイン
+      <% end %>
+    </span>
+    
+    <div class="m-3">
+      <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: "btn btn-outline-dark" %>
+    </div>
+  </div>
+<% end %>

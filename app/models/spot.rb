@@ -11,9 +11,9 @@ class Spot < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   
-  # =============bookmark=============
-  def bookmarked_by?(user)
-    bookmarks.where(user_id: user).exists?
+  # =============favolite=============
+  def favorited_by?(user)
+    favorites.where(user_id: user).exists?
   end
 
   # =============tag関連=============

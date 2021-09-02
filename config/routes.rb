@@ -22,6 +22,7 @@ resources 'lists', only: [:index, :edit, :update, :create, :destroy]
 
   get 'trips_search' => 'trips#search'
   get 'calendar' => 'trips#calendar'
+  get 'favorite_all' => 'favorites#favorite_all'
 
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 

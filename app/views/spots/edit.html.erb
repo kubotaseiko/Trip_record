@@ -1,36 +1,71 @@
-<h1>spots#edit</h1>
 
-<%= form_with(model:[@trip, @spot], local:true, url: "/trips/#{@trip.id}/spots/#{@spot.id}") do |f| %>
+<div class="text-left m-5 ">
+  <%= link_to '<< 戻る', trip_spot_path(trip_id: @spot.trip, id: @spot) %>
+</div>
 
-  <h4>スポット名</h4>
-  <%= f.text_field :spot_name %>
+<div class="mt-5 mb-5 p-5 col-md-8 col-12 border rounded mx-auto">
+  <%= form_with(model:[@trip, @spot], local:true, url: "/trips/#{@trip.id}/spots/#{@spot.id}") do |f| %>
 
-  <h4>住所</h4>
-  <%= f.text_field :address %>
+    <div class="field form-group">
+      <h4>スポット名</h4>
+      <%= f.text_field :spot_name, class: "form-control col-md-9 col-12 mx-auto" %>
+    </div>
 
-  <h4>comment</h4>
-  <%= f.text_area :comment %>
+    <div class="field form-group">
+    <h4>住所</h4>
+    <%= f.text_field :address, class: "form-control col-md-9 col-12 mx-auto" %>
+    </div>
 
-  <h4>画像</h4>
+    <div class="field form-group">
+      <h4>comment</h4>
+      <%= f.text_area :comment, class: "form-control col-md-9 col-12 mx-auto" %>
+    </div>
 
-  <% if @spot.post_images.present? %>
-    <p>現在登録されている画像（削除するものはチェックしてください）</p>
-    <% @spot.post_images.each do |image| %>
-    <%= f.check_box :image_ids, {multiple: true}, image.id, false %>
-      <%= attachment_image_tag image, :image ,:fill, 200, 200 %> <br>
-    <% end %>
+    <div class="field form-group">
+      <h4>画像</h4>
+      
+      <div class="detail_font m-2">
+        shift + クリック　または　ctrl + クリックで</br>
+        画像を選択し、アップロードしてください。
+      </div>
+      <div class="detail_font m-2 mx-auto col-md-8 col-12">
+        <%= f.attachment_field :post_images_images, multiple: true, class: "form-control-file",onchange: "previewFiles()", id: "spot_post_images_images" %>
+      </div>
+      <div class="border rounded col-md-9 col-12 mx-auto p-5">
+        <img src="" class="img-fluid" height="200" alt="preview..." name="preview0">
+        <img src="" class="img-fluid" height="200" name="preview1">
+        <img src="" class="img-fluid" height="200" name="preview2">
+      </div>
+      
+      <% if @spot.post_images.present? %>
+        <div class="detail_font m-2">
+          現在登録されている画像</br>
+          （削除するものはチェックしてください）
+        </div>
+        <% @spot.post_images.each do |image| %>
+        <%= f.check_box :image_ids, {multiple: true}, image.id, false %>
+          <%= attachment_image_tag image, :image ,:fill, 200, 200 %> <br>
+        <% end %>
+      <% end %>
+      
+
+
+    </div>
+
+    <div class="field form-group">
+      <h4><%= f.label :tag_name, 'タグ付け' %></h4>
+      <div class="detail_font mb-2">
+        スペースを入力することで</br>
+        複数のタグを付けることができます。
+      </div>
+      <%= f.text_field :tag_name, placeholder: "例：カフェ コロナ対策", class: "form-control col-md-9 col-12 mx-auto" %>
+    </div>
+
+    <%= f.submit '保存', class: "btn btn-outline-dark pl-5 pr-5" %>
+
   <% end %>
+</div>
 
-
-  <h7>
-    shift + クリック　または　ctrl + クリックで画像を選択し、
-    アップロードしてください。
-  </h7><br>
-    <%= f.attachment_field :post_images_images, multiple: true, class: "form-control-file",onchange: "previewFiles()", id: "spot_post_images_images" %>
-    <img src="" height="200" alt="preview..." name="preview0">
-    <img src="" height="200" name="preview1">
-    <img src="" height="200" name="preview2">
-
-  <%= f.submit '保存' %>
-
-<% end %>
+<div class="text-left m-5 ">
+  <%= link_to '<< 戻る', trip_spot_path(trip_id: @spot.trip, id: @spot) %>
+</div>

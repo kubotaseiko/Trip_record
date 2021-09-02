@@ -1,0 +1,11 @@
+<div id='favorite_btn' class="favo_btn">
+  <% if spot.favorited_by?(current_user) %>
+    <%= link_to trip_spot_favorite_path(id: spot.trip_id, spot_id: spot), method: :delete, remote: true, class: 'btnripple3' do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+  <% else %>
+    <%= link_to trip_spot_favorite_path(id: spot.trip_id, spot_id: spot), method: :post, remote: true, class: 'btnripple3' do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+  <% end %>
+</div>
