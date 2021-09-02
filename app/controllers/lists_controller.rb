@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
   def index
-    @lists = List.all
+    @lists = List.where(user_id: current_user.id).order(id: "DESC")
     @list = List.new
   end
 
@@ -10,7 +10,7 @@ class ListsController < ApplicationController
     @list.user_id = current_user.id
     @list.get_site_info(@list.site_url)
     @list.save
-    redirect_to list_path(@list.id)
+    redirect_to lists_path
   end
 
   def edit
@@ -21,7 +21,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list.get_site_info(@list.site_url)
     @list.update(list_params)
-    redirect_to list_path(@list.id)
+    redirect_to lists_path
   end
 
   def destroy

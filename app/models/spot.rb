@@ -10,6 +10,11 @@ class Spot < ApplicationRecord
   # =============GoogleMapに使用=============
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+  
+  # =============bookmark=============
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user).exists?
+  end
 
   # =============tag関連=============
   def save_tag(sent_tags)

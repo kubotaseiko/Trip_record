@@ -1,6 +1,8 @@
 class HomesController < ApplicationController
   def top
     @tag_list = Tag.all
+    # .includes(:tagmaps).where(tagmap: { id: 1 })
+    # @tag_list = Tag.includes(:spots).where(spot: { user_id: current_user.id })
   end
 
   def guest_sign_in

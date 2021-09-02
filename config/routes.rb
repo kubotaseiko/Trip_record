@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'homes#top'
+  get '/search' => 'spots#search'
 
 
   resources 'trips', only: [:index, :show, :edit, :update, :create, :destroy] do
@@ -20,7 +21,6 @@ resources 'lists', only: [:index, :edit, :update, :create, :destroy]
   end
 
   get 'trips_search' => 'trips#search'
-  get 'search' => 'spots#search'
   get 'calendar' => 'trips#calendar'
 
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'

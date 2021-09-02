@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
   def index
-    @trips = Trip.all
+    @trips = Trip.where(user_id: current_user.id).order(id: "DESC")
     @trip = Trip.new
   end
 

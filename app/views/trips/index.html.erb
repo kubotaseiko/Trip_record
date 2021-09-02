@@ -3,8 +3,8 @@
 <form class="form-inline">
   <div class="form-group mx-auto m-2">
     <%= form_with url: trips_search_path, method: :get, class: 'mx-auto', local: true do |f| %>
-      <%= f.text_field :keyword, value: @keyword, placeholder: "ワードを入力して検索", class: "form-control-sm" %>
-      <button type="submit" class="btn btn-light btn-sm d-none d-lg-block">
+      <%= f.text_field :keyword, value: @keyword, placeholder: "ワードを入力して検索", class: "form-control" %>
+      <button type="submit" class="ml-2 btn btn-outline-dark">
         <i class="fas fa-search" aria-hidden="true"></i>
       </button>
     <% end %>

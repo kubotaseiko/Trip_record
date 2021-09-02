@@ -1,7 +1,7 @@
 class SpotsController < ApplicationController
 
   def index
-    gon.spots = Spot.all
+    gon.spots = Spot.where(user_id: current_user.id)
   end
 
   def show
@@ -55,20 +55,20 @@ class SpotsController < ApplicationController
     redirect_to trip_path(params[:trip_id])
   end
 
+  def spots_search
+    split_keyword = params[:keyword].split(/[[:blank:]]+/)
+    @spots = []
+    split_keyword.each do |keyword|
+      next if keyword == ""
+      @spots += Spot.where(["spot_name like? OR address like? OR comment like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+    end
+    @spots.uniq!
+  end
+
   def tag_search
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
-    @spots = @tag.spots.all
-  end
-
-  def search
-    split_keyword = params[:keyword].split(/[[:blank:]]+/)
-      @spots = []
-      split_keyword.each do |keyword|
-        next if keyword == ""
-        @spots += Spot.where(["spot_name like? OR address like? OR comment like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
-      end
-      @shops.uniq!
+    @spots = @tag.spots.where(user_id: current_user.id)
   end
 
   private
