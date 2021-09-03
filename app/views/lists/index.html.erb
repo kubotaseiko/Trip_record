@@ -26,8 +26,8 @@
       </div>
     </div>
     <div class="text-right p-3" style="font-size: 12px;">
-      <%= link_to "編集",edit_list_path(list) %>
       <%= link_to "削除", list_path(list), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <%= link_to "編集",edit_list_path(list) %>
     </div>
   </div>
 <% end %>

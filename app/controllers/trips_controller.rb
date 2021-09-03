@@ -17,8 +17,13 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
-    @trip.save
-    redirect_to trip_path(@trip.id)
+    if @trip.save
+      redirect_to trip_path(@trip.id)
+    else
+      @trips = Trip.where(user_id: current_user.id).order(id: "DESC")
+      @trip = Trip.new
+      render 'index'
+    end
   end
 
   def edit
