@@ -69,10 +69,21 @@ li {
 .menu {
   margin: 30px;
 }
+.menu_ber {
+  color: #FFF;
+  background-image: image-url("menu.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.menu > a {
+  color: #FFF;
+}
 
 .page_title {
-  font-size: 50px;
-  margin-bottom: 30px;
+  font-size: 70px;
+  margin-bottom: 20px;
+  paddong-top: 150px;
 }
 
 .content-title {
@@ -83,3 +94,31 @@ li {
   font-size: 35px;
   color: #FF6699;
 }
+
+i {
+  color: #000;
+}
+
+header {
+  height: 60px;
+}
+
+.d-md-block{
+  color: #000;
+}
+
+h2 > a {
+  color: #000;
+}
+
+footer {
+  height: 230px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: image-url("footer.png");
+
+}
+
+

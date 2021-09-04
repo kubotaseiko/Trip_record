@@ -1,34 +1,36 @@
-<div class='page_title'>Next Plan</div>
+<div class="container text-center mt-2">
+  <div class='page_title'>Next Plan</div>
 
-<div class="content p-3">
-  <a class="js-modal-open btn btn-outline-primary" href="">NextPlanを投稿</a>
-</div>
-<div class="modal js-modal">
-    <div class="modal__bg js-modal-close"></div>
-    <div class="modal__content">
-        <%= render 'lists/new', list: @list %>
-        <a class="js-modal-close" href="">閉じる</a>
-    </div>
-</div>
-
-<div class="row">
-  <% @lists.each do |list| %>
-  <div class="card col-md-4 col-12">
-    <img src="<%= list.image %>" alt="画像がありません" class="image_area card-img-top pt-3">
-    <div class="card-body">
-      <div class="content_font">
-          <%= list.spot_name %>
-      </div>
-      <div class="detail_font">
-        <li><%= list.address %></li>
-        <li><%= list.comment %></li>
-        <li><%= link_to list.site_url, list.site_url %></li>
-      </div>
-    </div>
-    <div class="text-right p-3" style="font-size: 12px;">
-      <%= link_to "削除", list_path(list), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-      <%= link_to "編集",edit_list_path(list) %>
-    </div>
+  <div class="content p-3">
+    <a class="js-modal-open btn btn-outline-primary" href="">NextPlanを投稿</a>
   </div>
-<% end %>
+  <div class="modal js-modal">
+      <div class="modal__bg js-modal-close"></div>
+      <div class="modal__content">
+          <%= render 'lists/new', list: @list %>
+          <a class="js-modal-close" href="">閉じる</a>
+      </div>
+  </div>
+  
+  <div class="row">
+    <% @lists.each do |list| %>
+    <div class="card col-md-4 col-12">
+      <img src="<%= list.image %>" alt="画像がありません" class="image_area card-img-top pt-3">
+      <div class="card-body">
+        <div class="content_font">
+            <%= list.spot_name %>
+        </div>
+        <div class="detail_font">
+          <li><%= list.address %></li>
+          <li><%= list.comment %></li>
+          <li><%= link_to list.site_url, list.site_url %></li>
+        </div>
+      </div>
+      <div class="text-right p-3" style="font-size: 12px;">
+        <%= link_to "削除", list_path(list), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <%= link_to "編集",edit_list_path(list) %>
+      </div>
+    </div>
+  <% end %>
+  </div>
 </div>

@@ -1,7 +1,7 @@
    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <%= link_to 'TripRecord', root_path, class:"navbar-brand" %>
+          <h2><%= link_to 'Trip Record', root_path, class:"navbar-brand" %></h2>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
@@ -10,27 +10,32 @@
             <% if user_signed_in? %>
               <li class="nav-item">
                 <%= link_to calendar_path, class:"nav-link text-light" do %>
-                  <i class="far fa-calendar-alt"></i>
+                  <i class="far fa-calendar-alt d-none d-lg-block fa-2x"></i>
+                  <div class="d-md-block d-lg-none"><i class="far fa-calendar-alt"></i>&emsp;Carender</div>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to spots_path, class:"nav-link text-light" do %>
-                  <i class="fas fa-map-marked-alt"></i>
+                  <i class="fas fa-map-marked-alt d-none d-lg-block fa-2x"></i>
+                  <div class="d-md-block d-lg-none"><i class="fas fa-map-marked-alt"></i>&emsp;Map</div>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to trips_path, class:"nav-link text-light", data: {"turbolinks" => false} do %>
-                  <i class="fas fa-plane"></i>
+                  <i class="fas fa-plane d-none d-lg-block fa-2x"></i>
+                  <div class="d-md-block d-lg-none"><i class="fas fa-plane"></i>&emsp;Trip</div>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to lists_path, class:"nav-link text-light", data: {"turbolinks" => false} do %>
-                  <i class="fas fa-external-link-alt"></i>
+                  <i class="fas fa-external-link-alt d-none d-lg-block fa-2x"></i>
+                  <div class="d-md-block d-lg-none"><i class="fas fa-external-link-alt"></i>&emsp;Next Plan</div>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
-                  <i class="fas fa-sign-out-alt"></i>
+                  <i class="fas fa-sign-out-alt d-none d-lg-block fa-2x"></i>
+                  <div class="d-md-block d-lg-none"><i class="fas fa-sign-out-alt"></i>&emsp;ログアウト</div>
                 <% end %>
               </li>
             <% end %>
