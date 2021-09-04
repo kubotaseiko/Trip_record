@@ -24,6 +24,9 @@
     <div>
     <%= spot.address %>
     </div>
+    <div class="text-left col-6 pl-5">
+      <%= render 'favorites/favorite_button', spot: spot %>
+    </div>
 
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
     <ol class="carousel-indicators">

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources 'trips', only: [:index, :show, :edit, :update, :create, :destroy] do
     resources 'spots', only: [:show, :edit, :update, :new, :create, :destroy] do
-      resource 'favorite', only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
   end
 
