@@ -42,13 +42,15 @@ class TripsController < ApplicationController
     redirect_to trips_path
   end
 
-  def search
+  def trips_search
     split_keyword = params[:keyword].split(/[[:blank:]]+/)
     @trips = []
     split_keyword.each do |keyword|
       next if keyword == ""
       @trips += Trip.where(["location like? OR comment like? ", "%#{keyword}%", "%#{keyword}%"])
     end
+    @trips.uniq!
+    @trip = Trip.new
     render 'index'
   end
 

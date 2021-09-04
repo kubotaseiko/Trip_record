@@ -20,7 +20,7 @@ resources 'lists', only: [:index, :edit, :update, :create, :destroy]
     get 'spots', to: 'spots#tag_search'
   end
 
-  get 'trips_search' => 'trips#search'
+  get 'trips_search' => 'trips#trips_search'
   get 'calendar' => 'trips#calendar'
   get 'favorite_all' => 'favorites#favorite_all'
 

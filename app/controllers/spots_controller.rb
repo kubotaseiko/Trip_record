@@ -55,7 +55,7 @@ class SpotsController < ApplicationController
     redirect_to trip_path(params[:trip_id])
   end
 
-  def spots_search
+  def search
     split_keyword = params[:keyword].split(/[[:blank:]]+/)
     @spots = []
     split_keyword.each do |keyword|
