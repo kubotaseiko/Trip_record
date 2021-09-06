@@ -1,7 +1,13 @@
-# TripRecord
+# アプリ名：TripRecord
 
 ## サイト概要
+URL：http://35.74.218.154/
 
+
+Calendar
+Trips
+SpotsMap
+NextPlan
 
 ### サイトテーマ
 思い出を管理
@@ -24,5 +30,7 @@
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
+- CSSフレームワーク：bootstrap 5.1.0
 - IDE：Cloud9
+- デプロイ：AWS EC2
 

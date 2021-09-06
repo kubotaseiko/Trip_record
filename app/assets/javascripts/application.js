@@ -23,6 +23,7 @@
 //= require fullcalendar
 //= require fullcalendar/lang/ja
 
+
 // カレンダー表示
 $(function () {
     $(document).on('turbolinks:load', function () {
