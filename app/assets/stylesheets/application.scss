@@ -112,13 +112,24 @@ h2 > a {
 }
 
 footer {
-  height: 230px;
+  height: 350px;
   width: 100%;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: image-url("footer.png");
 
+  position: absolute;
+  bottom: 0;
+
 }
+
+.footerFixed{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 350px;
+  box-sizing: border-box;
+}
+
 
 

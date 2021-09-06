@@ -15,12 +15,14 @@
   </head>
 
   <body>
-  <div class="container text-center mt-2">
-    <%= render "layouts/header" %>
-    <header></header>
-    <%= yield %>
-  </div>
-    <footer></footer>
-    
+    <div class="footerFixed">
+      <%= render "layouts/header" %>
+      <header></header>
+        <div class="container text-center mt-2">
+          <%= yield %>
+        </div>
+      <footer></footer>
+    </div>
+
   </body>
 </html>
