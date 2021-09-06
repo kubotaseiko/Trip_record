@@ -72,6 +72,7 @@ gem 'dotenv-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'metainspector'
+gem "io-console"
 
 group :production do
   gem 'mysql2'
