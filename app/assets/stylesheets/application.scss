@@ -57,29 +57,6 @@ li {
   font-size: 30px;
 }
 
-.menu-font {
-  color:#0000FF;
-  font-size: 20px;
-}
-
-.menu-font > i {
-  color: #6c6b6b;
-}
-
-.menu {
-  margin: 30px;
-}
-.menu_ber {
-  color: #FFF;
-  background-image: image-url("menu.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.menu > a {
-  color: #FFF;
-}
-
 .page_title {
   font-size: 70px;
   margin-bottom: 20px;
@@ -107,9 +84,7 @@ header {
   color: #000;
 }
 
-h2 > a {
-  color: #000;
-}
+// =========フッター==========
 
 footer {
   height: 350px;
@@ -121,6 +96,8 @@ footer {
 
   position: absolute;
   bottom: 0;
+  padding-top: 300px;
+  font-size: 20px;
 
 }
 
